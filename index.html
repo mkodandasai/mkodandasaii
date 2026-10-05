@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio & Resume</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#e11d48', // Updated to Crimson Red
+                        secondary: '#1e293b', 
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #121212;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e11d48;
+        }
+        section {
+            scroll-margin-top: 6rem;
+        }
+        #background-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1; 
+            background-color: #000000; 
+        }
+    </style>
+</head>
+<body class="bg-black text-slate-300 font-sans antialiased selection:bg-primary selection:text-white relative">
+
+    <canvas id="background-canvas"></canvas>
+
+    <header class="fixed w-full top-0 z-50 bg-black/80 backdrop-blur-md border-b border-gray-900 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="text-xl font-bold text-white tracking-tight">M Kodanda Sai Portfolio<span class="text-primary">.</span></a>
+                </div>
+                
+                <nav class="hidden md:flex space-x-6">
+                    <a href="#summary" class="text-gray-400 hover:text-primary font-medium transition-colors text-sm">Summary</a>
+                    <a href="#experience" class="text-gray-400 hover:text-primary font-medium transition-colors text-sm">Experience</a>
+                    <a href="#education" class="text-gray-400 hover:text-primary font-medium transition-colors text-sm">Education</a>
+                    <a href="#skills" class="text-gray-400 hover:text-primary font-medium transition-colors text-sm">Skills</a>
+                    <a href="#contact" class="text-gray-400 hover:text-primary font-medium transition-colors text-sm">Contact</a>
+                </nav>
+
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-400 hover:text-primary focus:outline-none p-2" aria-label="Toggle Menu">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900 border-b border-gray-800">
+            <div class="px-4 pt-2 pb-4 space-y-1 shadow-lg">
+                <a href="#summary" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-primary hover:bg-gray-800">Summary</a>
+                <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-primary hover:bg-gray-800">Experience</a>
+                <a href="#education" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-primary hover:bg-gray-800">Education</a>
+                <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-primary hover:bg-gray-800">Skills</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-primary hover:bg-gray-800">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <section id="hero" class="pt-32 pb-16 min-h-[60vh] flex flex-col-reverse md:flex-row items-center justify-between gap-12">
+            <div class="max-w-2xl text-center md:text-left">
+                <span class="text-primary font-semibold tracking-wider uppercase text-sm mb-4 block">Welcome to my space</span>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+                    I balance a <span class="text-primary">9-to-7</span> with relentless personal growth.
+                </h1>
+                <p class="text-lg text-gray-400 mb-8">
+                    SAP MM/SAP Process Director/EWM/ABAP Professional | Lifelong Learner | Fitness Enthusiast.
+                </p>
+                <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                    <a href="#experience" class="px-6 py-3 bg-primary text-white font-medium rounded-lg shadow-sm hover:bg-opacity-90 transition-all duration-200">
+                        View Resume
+                    </a>
+                    <a href="#contact" class="px-6 py-3 bg-transparent text-white font-medium rounded-lg border border-gray-600 hover:border-primary hover:text-primary transition-all duration-200">
+                        Contact Me
+                    </a>
+                </div>
+            </div>
+            
+            <div class="flex-shrink-0">
+                <div class="w-48 h-48 sm:w-64 sm:h-64 rounded-full border-4 border-gray-900 p-2 shadow-2xl relative">
+                    <img src="1781779518025.jpg" alt="Profile Picture" class="w-full h-full rounded-full object-cover bg-gray-900" onerror="this.src='https://via.placeholder.com/256/111111/e11d48?text=My+Pic'">
+                    <div class="absolute bottom-2 right-2 w-6 h-6 bg-primary rounded-full border-2 border-black"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="summary" class="py-16">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-white mb-2">Professional Summary</h2>
+                <div class="w-16 h-1 bg-primary rounded"></div>
+            </div>
+            <div class="bg-gray-900/40 backdrop-blur-sm rounded-2xl border border-gray-800 p-8 shadow-sm">
+                <p class="text-lg text-gray-400 leading-relaxed">
+                    SAP MM Consultant with experience in SAP S/4HANA, SAP Process Director (PD), Material Master (MATMAS), and Procure-to-Pay (P2P) processes. Experienced in production support, incident management, root-cause analysis, SAP transaction troubleshooting,business requirement analysis, user-story creation, change and deployment support, testing, and implementation of SAP enhancements. Strong ability to collaborate with functional, technical, and business teams to deliver reliable and sustainable SAP solutions
+                </p>
+            </div>
+        </section>
+
+        <section id="experience" class="py-16">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-white mb-2">Professional Experience</h2>
+                <div class="w-16 h-1 bg-primary rounded"></div>
+            </div>
+            <div class="space-y-6">
+                <div class="bg-gray-900/40 backdrop-blur-sm rounded-2xl border border-gray-800 p-8 shadow-sm hover:border-gray-600 transition-colors">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Packaged App Development Analyst </h3>
+                            <p class="text-primary font-medium">[Accenture]</p>
+                        </div>
+                        <span class="text-gray-500 text-sm mt-2 sm:mt-0">2024 – Present | Chennai</span>
+                    </div>
+			<div>
+                            <p class="text-primary font-medium">[Client:- BASF]</p>
+                        </div>
+			
+                    <ul class="list-disc list-inside text-gray-400 space-y-2 ml-2">
+                        <li> Provide SAP application support for business-critical SAP MM processes and customized transactions.</li>
+                        <li>  Resolve SAP application and transaction-related issues encountered by end users during document creation, posting,
+processing, and other business activities.</li>
+                        <li> Analyze production incidents and identify root causes across standard SAP functionality, customized transactions, and
+integrated business processes.</li>
+                        <li>Support SAP Material Master (MATMAS) processes and troubleshoot issues related to material master data and
+associated business processes.</li>
+			<li> Work extensively with SAP Process Director (PD) to support document processing and business workflows.</li>
+			<li>Analyze and troubleshoot issues within Procure-to-Pay (P2P) processes to minimize business disruption.</li>
+			<li>Gather and analyze business requirements from users and translate them into functional solutions.</li>
+			<li> Create and refine user stories based on business requirements and coordinate with development and testing teams
+throughout the delivery lifecycl.</li>
+			<li> Support the development and implementation of custom SAP enhancements and changes based on client-specific
+requirements.</li>
+			<li>Perform change and deployment-related troubleshooting, including analysis of issues caused by incorrect or
+incomplete system changes. Collaborate with functional, technical, development, and business teams to test, validate,
+and deploy SAP solutions.</li>
+			<li>Provide production support and ensure timely resolution of incidents while maintaining the stability and reliability of
+SAP business processes. Identify recurring incidents and contribute to sustainable solutions and continuous process
+improvement.</li>
+			<li> Participate in testing activities, including validation of fixes, enhancements, and business requirements before
+production deployment.</li>
+			<li> Maintain effective communication with stakeholders to understand issues, provide status updates, and ensure timely
+resolution.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="py-16">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                
+                <div>
+                    <div class="mb-8">
+                        <h2 class="text-3xl font-bold text-white mb-2">Education</h2>
+                        <div class="w-16 h-1 bg-primary rounded"></div>
+                    </div>
+                    <div class="bg-gray-900/40 backdrop-blur-sm rounded-2xl border border-gray-800 p-8 shadow-sm">
+                        <h3 class="text-xl font-bold text-white">Bachelor of Technology Electronics and Communication Engineering</h3>
+                        <p class="text-primary mb-2">REVA University</p>
+                        <p class="text-gray-500 text-sm mb-4">Graduated: 2024</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="mb-8">
+                        <h2 class="text-3xl font-bold text-white mb-2">Certifications</h2>
+                        <div class="w-16 h-1 bg-primary rounded"></div>
+                    </div>
+                    <div class="bg-gray-900/40 backdrop-blur-sm rounded-2xl border border-gray-800 p-6 shadow-sm mb-4 flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gray-900 border border-gray-800 rounded-lg flex items-center justify-center text-primary flex-shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">SAP Certified Associate- SAP S/4HANA Cloud Private Edition, Sourcing and Procurement</h3>
+                            <p class="text-gray-400 text-sm">Issued by SAP</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-900/40 backdrop-blur-sm rounded-2xl border border-gray-800 p-6 shadow-sm flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gray-900 border border-gray-800 rounded-lg flex items-center justify-center text-primary flex-shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white">SAP Certified- Positioning SAP Business Al Solutions as Part of SAP Business Suite</h3>
+                            <p class="text-gray-400 text-sm">Issued by SAP</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="skills" class="py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                
+                <div>
+                    <div class="mb-8">
+                        <h2 class="text-3xl font-bold text-white mb-2">Technical & Soft Skills</h2>
+                        <div class="w-16 h-1 bg-primary rounded"></div>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-gray-900 border border-gray-800 text-gray-300 rounded-full font-medium shadow-sm hover:border-primary transition-colors">SAP MM</span>
+                        <span class="px-4 py-2 bg-gray-900 border border-gray-800 text-gray-300 rounded-full font-medium shadow-sm hover:border-primary transition-colors">SAPProcess Director (PD)</span>
+                        <span class="px-4 py-2 bg-gray-900 border border-gray-800 text-gray-300 rounded-full font-medium shadow-sm hover:border-primary transition-colors">Material Master</span>
+                        <span class="px-4 py-2 bg-gray-900 border border-gray-800 text-gray-300 rounded-full font-medium shadow-sm hover:border-primary transition-colors">Procure-to-Pay (P2P)</span>
+                        <span class="px-4 py-2 bg-gray-900 border border-gray-800 text-gray-300 rounded-full font-medium shadow-sm hover:border-primary transition-colors"> SAP Application Support</span>
+                        <span class="px-4 py-2 bg-gray-900 border border-gray-800 text-gray-300 rounded-full font-medium shadow-sm hover:border-primary transition-colors"> SAP Transaction Troubleshooting</span>
+			<span class="px-4 py-2 bg-gray-900 border border-gray-800 text-gray-300 rounded-full font-medium shadow-sm hover:border-primary transition-colors">SAP Custom Transactions</span>
+			<span class="px-4 py-2 bg-gray-900 border border-gray-800 text-gray-300 rounded-full font-medium shadow-sm hover:border-primary transition-colors">SAP Enhancements</span>
+			 <span class="px-4 py-2 bg-gray-900 border border-gray-800 text-gray-300 rounded-full font-medium shadow-sm hover:border-primary transition-colors"> Incident Management</span>
+			 <span class="px-4 py-2 bg-gray-900 border border-gray-800 text-gray-300 rounded-full font-medium shadow-sm hover:border-primary transition-colors">Root Cause Analysis</span>
+			 <span class="px-4 py-2 bg-gray-900 border border-gray-800 text-gray-300 rounded-full font-medium shadow-sm hover:border-primary transition-colors">Problem Solving</span>
+			 <span class="px-4 py-2 bg-gray-900 border border-gray-800 text-gray-300 rounded-full font-medium shadow-sm hover:border-primary transition-colors"> Requirements Gathering</span>
+			 <span class="px-4 py-2 bg-gray-900 border border-gray-800 text-gray-300 rounded-full font-medium shadow-sm hover:border-primary transition-colors">Functional Analysis</span>
+			 <span class="px-4 py-2 bg-gray-900 border border-gray-800 text-gray-300 rounded-full font-medium shadow-sm hover:border-primary transition-colors">User Story Creation</span>
+			 <span class="px-4 py-2 bg-gray-900 border border-gray-800 text-gray-300 rounded-full font-medium shadow-sm hover:border-primary transition-colors">Change Management</span>
+			 <span class="px-4 py-2 bg-gray-900 border border-gray-800 text-gray-300 rounded-full font-medium shadow-sm hover:border-primary transition-colors">Deployment Support</span>
+			 <span class="px-4 py-2 bg-gray-900 border border-gray-800 text-gray-300 rounded-full font-medium shadow-sm hover:border-primary transition-colors">Defect Analysis</span>
+			 <span class="px-4 py-2 bg-gray-900 border border-gray-800 text-gray-300 rounded-full font-medium shadow-sm hover:border-primary transition-colors">Testing Validation</span>
+			<span class="px-4 py-2 bg-gray-900 border border-gray-800 text-gray-300 rounded-full font-medium shadow-sm hover:border-primary transition-colors">Production Issue Resolution</span>
+			<span class="px-4 py-2 bg-gray-900 border border-gray-800 text-gray-300 rounded-full font-medium shadow-sm hover:border-primary transition-colors">Continuous Improvement</span>
+
+                    </div>
+                </div>
+
+                <div>
+                    <div class="mb-8">
+                        <h2 class="text-3xl font-bold text-white mb-2">Languages</h2>
+                        <div class="w-16 h-1 bg-primary rounded"></div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-gray-900/40 backdrop-blur-sm rounded-xl border border-gray-800 p-4 flex justify-between items-center">
+                            <span class="text-white font-medium">English</span>
+                            <span class="text-primary text-sm font-semibold">Fluent</span>
+                        </div>
+			<div class="bg-gray-900/40 backdrop-blur-sm rounded-xl border border-gray-800 p-4 flex justify-between items-center">
+                            <span class="text-white font-medium">Kannada</span>
+                            <span class="text-primary text-sm font-semibold">Fluent</span>
+                        </div>
+			<div class="bg-gray-900/40 backdrop-blur-sm rounded-xl border border-gray-800 p-4 flex justify-between items-center">
+                            <span class="text-white font-medium">Telugu</span>
+                            <span class="text-primary text-sm font-semibold">Fluent</span>
+                        </div>
+			<div class="bg-gray-900/40 backdrop-blur-sm rounded-xl border border-gray-800 p-4 flex justify-between items-center">
+                            <span class="text-white font-medium">Hindi</span>
+                            <span class="text-primary text-sm font-semibold">Fluent</span>
+                        </div>
+                        <div class="bg-gray-900/40 backdrop-blur-sm rounded-xl border border-gray-800 p-4 flex justify-between items-center">
+                            <span class="text-white font-medium">Tamil</span>
+                            <span class="text-primary text-sm font-semibold">Learning</span>
+                        </div>
+                        <div class="bg-gray-900/40 backdrop-blur-sm rounded-xl border border-gray-800 p-4 flex justify-between items-center border-l-4 border-l-primary">
+                            <span class="text-white font-medium">Japanese (日本語)</span>
+                            <span class="text-gray-400 text-sm italic">Currently Learning</span>
+                        </div>
+                        <div class="bg-gray-900/40 backdrop-blur-sm rounded-xl border border-gray-800 p-4 flex justify-between items-center border-l-4 border-l-primary">
+                            <span class="text-white font-medium">Sign Language</span>
+                            <span class="text-gray-400 text-sm italic">Currently Learning</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="contact" class="py-20 bg-gray-900/30 backdrop-blur-md border border-gray-800 rounded-3xl my-16 shadow-2xl relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 p-6 sm:p-10">
+                <div>
+                    <h2 class="text-3xl font-bold mb-4 text-white">Let's Connect</h2>
+                    <p class="text-gray-400 mb-8 text-lg">
+                        Whether you want to discuss SAP MM/SAP Process Director/EWM/ABAP, exchange language learning tips, or just say hi, I'd love to hear from you.
+                    </p>
+                    <div class="space-y-4 text-gray-400">
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            <span>Chennai, Tamil Nadu</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            <span>mkodandasai@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-gray-900 bg-black/80 backdrop-blur-md py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-500 text-sm"></p>
+        </div>
+    </footer>
+
+    <script>
+        const canvas = document.getElementById('background-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particlesArray = [];
+        const numberOfParticles = 80; // slightly reduced for cleaner look
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2;
+                this.speedX = (Math.random() * 0.5) - 0.25;
+                this.speedY = (Math.random() * 0.5) - 0.25;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.y < 0) this.y = canvas.height;
+                if (this.y > canvas.height) this.y = 0;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.3)'; // Softer dots so red pops more
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+            }
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        });
+
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            });
+        });
+
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerText;
+            submitBtn.innerText = 'Message Sent!';
+            contactForm.reset();
+            setTimeout(() => {
+                submitBtn.innerText = originalText;
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
